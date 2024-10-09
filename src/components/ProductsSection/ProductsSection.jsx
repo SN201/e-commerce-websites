@@ -1,7 +1,10 @@
 import React from 'react'
 import ProductSectionItem from './ProductSectionItem'
 import { storeData } from '../../assets/data/dummyData'
+import { useParams , Link } from 'react-router-dom';
+
 function ProductsSection() {
+
   return (
     <div>
       <div className="bg-black p-2 w-[50%] mx-auto rounded-md">
@@ -11,7 +14,7 @@ function ProductsSection() {
       </div>
       <div className='grid lg:grid-cols-3 md:grid-cols-2  sm:grid-cols-1 justify-center py-8 gap-4 mx-auto '>
         {storeData.slice(0,6).map((product,index)=> {
-            return ( <div  
+            return ( <Link to={"/filteredProducts/:type/"+product.id}  
             key={index}>
                 <ProductSectionItem 
                 id ={product.id} 
@@ -23,7 +26,7 @@ function ProductsSection() {
                  img={product.img}
                  price={product.price}/>
 
-            </div>
+            </Link>
             )
         })}
         </div>
